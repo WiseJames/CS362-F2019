@@ -686,7 +686,7 @@ void baronCardEffect(struct gameState *state, int choice1, int currentPlayer) {
 	
 	if (choice1 > 0) { //Boolean true or going to discard an estate
 		int p = 0;//Iterator for hand!
-		int card_not_discarded = 0;//Flag for discard set!
+		int card_not_discarded = 1;//Flag for discard set!
 
 		while (card_not_discarded) {
 			if (state->hand[currentPlayer][p] == estate) { //Found an estate card!
@@ -746,7 +746,7 @@ void minionCardEffect(struct gameState* state, int handPos, int currentPlayer, i
 	{
 		state->coins = state->coins + 2;
 	}
-	else if (choice1)		//discard hand, redraw 4, other players with 5+ cards discard hand and draw 4
+	else if (choice2)		//discard hand, redraw 4, other players with 5+ cards discard hand and draw 4
 	{
 		//discard hand
 		while (numHandCards(state) > 0)
@@ -784,7 +784,7 @@ void minionCardEffect(struct gameState* state, int handPos, int currentPlayer, i
 	}
 }
 
-void ambassadorCardEffect(int choice1, int choice2, int handPos, struct gameState* state, int currentPlayer) {
+int ambassadorCardEffect(int choice1, int choice2, int handPos, struct gameState* state, int currentPlayer) {
 	int j = 0;		//used to check if player has enough cards to discard
 
 	if (choice2 > 2 || choice2 < 0)
@@ -839,6 +839,8 @@ void ambassadorCardEffect(int choice1, int choice2, int handPos, struct gameStat
 			}
 		}
 	}
+
+	return 0; 
 }
 
 void tributeCardEffect(struct gameState* state, int nextPlayer, int* tributeRevealedCards, int currentPlayer) {
@@ -897,7 +899,7 @@ void tributeCardEffect(struct gameState* state, int nextPlayer, int* tributeReve
 	}
 }
 
-void mineCardEffect(struct gameState* state, int currentPlayer, int choice1, int choice2, int handPos) {
+int mineCardEffect(struct gameState* state, int currentPlayer, int choice1, int choice2, int handPos) {
 	int j = state->hand[currentPlayer][choice1];  //store card we will trash
 
 	if (state->hand[currentPlayer][choice1] < copper || state->hand[currentPlayer][choice1] > gold)
@@ -929,6 +931,7 @@ void mineCardEffect(struct gameState* state, int currentPlayer, int choice1, int
 			break;
 		}
 	}
+	return 0; 
 }
 
 int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState *state, int handPos, int *bonus)
