@@ -51,3 +51,8 @@ Module.symvers
 Mkfile.old
 dkms.conf
 /.vs
+/DominionSolution/.vs/DominionSolution/v15
+/DominionSolution/DominionSolution/Debug/DominionSolution.tlog
+/DominionSolution/DominionSolution
+/DominionSolution
+/Random-Quiz
