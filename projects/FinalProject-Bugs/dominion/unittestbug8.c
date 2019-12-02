@@ -11,7 +11,21 @@
 
 int main(int argc, char** argv) {
 
+	struct gameState* state = newGame();
+	state->numPlayers = 2;
+	state->whoseTurn = 0;
+	state->numActions = 0;
+	state->coins = 0;
+	state->numBuys = 0;
+	state->handCount[0] = 1;
+	state->hand[0][0] = minion;
+	state->playedCardCount = 0;
+	int bonus = 0;
 
+	int result = cardEffect(minion, 1, 0, 0, state, 0, &bonus);
 
-	return 0; 
+	MYASSERT(result == 0);
+	MYASSERT(bonus == 2);
+
+	return 0;
 }
