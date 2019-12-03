@@ -28,7 +28,7 @@ int main(int argc, char** argv) {
 	int choice1 = 1;
 	int choice2 = silver;
 	int choice3 = 0;
-	int handPos = 0;
+	int handPos = 1;
 	int *bonus = 0;
 
 	cardEffect(remodel, choice1, choice2, choice3, &G, handPos, bonus);
