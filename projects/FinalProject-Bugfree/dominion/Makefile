@@ -37,6 +37,15 @@ unittestbug3: dominion.o unittestbug3.c
 unittestbug4: dominion.o unittestbug4.c
 	gcc -o unittestbug4 unittestbug4.c -g dominion.o rngs.o $(CFLAGS)
 
+unittestbug5: dominion.o unittestbug5.c
+	gcc -o unittestbug5 unittestbug5.c -g dominion.o rngs.o $(CFLAGS)
+
+unittestbug6: dominion.o unittestbug6.c
+	gcc -o unittestbug6 unittestbug6.c -g dominion.o rngs.o $(CFLAGS)
+
+unittestbug7: dominion.o unittestbug7.c
+	gcc -o unittestbug7 unittestbug7.c -g dominion.o rngs.o $(CFLAGS)
+
 unittestbug8: dominion.o unittestbug8.c
 	gcc -o unittestbug8 unittestbug8.c -g dominion.o rngs.o $(CFLAGS)
 
@@ -50,11 +59,14 @@ unittestbug10: dominion.o unittestbug10.c
 
 all: playdom player unittestbug1 unittestbug2 unittestbug3 unittestbug4
 
-unittestresults: unittestbug1 unittestbug2 unittestbug3 unittestbug4
+unittestresults: unittestbug1 unittestbug2 unittestbug3 unittestbug4 unittestbug5 unittestbug6 unittestbug7 unittestbug8 unittestbug9 unittestbug10 
 	./unittestbug1 &> unittestresults.out
 	./unittestbug2 >> unittestresults.out
 	./unittestbug3 >> unittestresults.out
 	./unittestbug4 >> unittestresults.out
+	./unittestbug5 >> unittestresults.out
+	./unittestbug6 >> unittestresults.out
+	./unittestbug7 >> unittestresults.out
 	./unittestbug8 >> unittestresults.out
 	./unittestbug9 >> unittestresults.out
 	./unittestbug10 >> unittestresults.out
@@ -63,4 +75,4 @@ unittestresults: unittestbug1 unittestbug2 unittestbug3 unittestbug4
 
 
 clean:
-	rm -f *.o playdom.exe playdom player player.exe unittestbug1 unittestbug2 unittestbug3 unittestbug4 unittestbug8 unittestbug9 unittestbug10 *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe
+	rm -f *.o playdom.exe playdom player player.exe unittestbug1 unittestbug2 unittestbug3 unittestbug4 unittestbug5 unittestbug6 unittestbug7 unittestbug8 unittestbug9 unittestbug10 *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe
