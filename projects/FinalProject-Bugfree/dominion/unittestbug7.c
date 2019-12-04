@@ -36,16 +36,17 @@ int main(int argc, char** argv) {
 	G.deck[nextPlayer][2] = tribute;
 	G.deck[nextPlayer][1] = copper;
 	G.deck[nextPlayer][0] = estate;
-	int coins = G.coins + 2;
+	int bonus = 0;
+	int coins = bonus + 2;
 	int actions = G.numActions + 2;
 	int handsize = G.handCount[G.whoseTurn] - 1;
 
 	//to catch seg fault
 	signal(SIGSEGV, segv_handler);
 
-	cardEffect(tribute, 0, 0, 0, &G, 0, 0);
+	cardEffect(tribute, 0, 0, 0, &G, 0, &bonus);
 
-	MYASSERT(G.coins == coins && G.numActions == actions && G.handCount[G.whoseTurn] == handsize);
+	MYASSERT(bonus == coins && G.numActions == actions && G.handCount[G.whoseTurn] == handsize);
 
 	signal(SIGSEGV, SIG_DFL);
 
