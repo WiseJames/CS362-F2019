@@ -11,26 +11,21 @@
 
 int main(int argc, char** argv) {
 
-	// set card array
-	int k[10] = { adventurer, council_room, feast, gardens, mine, remodel, smithy, village, baron, great_hall };
+	struct gameState* state = newGame();
+	state->numPlayers = 2;
+	state->whoseTurn = 0;
+	state->numActions = 0;
+	state->coins = 0;
+	state->numBuys = 0;
+	state->handCount[0] = 1;
+	state->hand[0][0] = minion;
+	state->playedCardCount = 0;
+	int bonus = 0;
 
-	// declare the game state
-	struct gameState G;
+	int result = cardEffect(minion, 1, 0, 0, state, 0, &bonus);
 
-	memset(&G, 0, sizeof(struct gameState)); 	// set the game state
-	initializeGame(2, k, 1, &G); 				// init the game
-
-	G.hand[0][1] = gold;				// place gold card at position 1
-
-	int choice1 = 1;
-	int choice2 = adventurer;			// place card choice as adventurer card
-	int choice3 = 0;
-	int handPos = 1;
-	int *bonus = 0;
-
-	int ret = cardEffect(mine, choice1, choice2, choice3, &G, handPos, bonus);
-
-	MYASSERT(ret != -1);
+	MYASSERT(result == 0);
+	MYASSERT(bonus == 2);
 
 	return 0;
 }
